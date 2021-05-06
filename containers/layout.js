@@ -10,6 +10,13 @@ export default function Layout({ page, children }) {
   return (
     <>
       <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Search cards and build your own Yugioh Deck"
+        />
+        <meta name="og:title" content="Yugioh Picks" />
+        <meta name="twitter:card" content="summary_large_image" />
         <title>Yugioh Picks | {page === "home" ? "Home" : "My Deck"}</title>
       </Head>
 
