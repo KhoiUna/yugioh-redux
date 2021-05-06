@@ -55,6 +55,11 @@ export default function Home() {
                 />
               </Fragment>
             ))}
+          {!cardsArray && (
+            <p style={{ fontWeight: "bold", fontSize: "1rem", margin: "5%" }}>
+              Loading...
+            </p>
+          )}
         </div>
 
         <div className={styles.pagination}>1 2 3...</div>
