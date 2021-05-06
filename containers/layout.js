@@ -1,9 +1,11 @@
 import Head from "next/head";
 import styles from "../styles/index.module.css";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { selectDeck } from "../features/deckSlice";
 
 export default function Layout({ page, children }) {
-  const deckNum = null;
+  const deckNum = useSelector(selectDeck).length;
 
   return (
     <>

@@ -6,9 +6,10 @@ import Layout from "../containers/layout";
 
 export default function Home() {
   const [cardsArray, setCardsArray] = useState(null);
+  const index = 0;
   useEffect(() => {
-    Cards.fetchAllCards().then((res) => setCardsArray(res));
-  }, []);
+    Cards.fetchCards(index).then((res) => setCardsArray(res));
+  }, [index]);
 
   return (
     <Layout page="home">
@@ -28,7 +29,7 @@ export default function Home() {
 
       <div className={styles.flex_container}>
         {cardsArray &&
-          cardsArray.slice(0, 21).map((info, index) => (
+          cardsArray.map((info, index) => (
             <Fragment key={index}>
               <Card
                 imageURL={info.card_images[0].image_url}
