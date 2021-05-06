@@ -4,12 +4,15 @@ import Card from "../components/Card";
 import styles from "../styles/index.module.css";
 import Layout from "../containers/layout";
 import Pagination from "../components/Pagination";
+import { useRouter } from "next/router";
 
-export default function Home() {
+export default function Index() {
   const [cardsArray, setCardsArray] = useState(null);
+  const router = useRouter();
+  const pageId = router.query.pageId;
   useEffect(() => {
-    Cards.fetchCards(1).then((res) => setCardsArray(res));
-  }, []);
+    Cards.fetchCards(pageId).then((res) => setCardsArray(res));
+  }, [pageId]);
 
   return (
     <Layout page="home">
@@ -51,7 +54,7 @@ export default function Home() {
         )}
       </div>
 
-      <Pagination pageQuery={1} />
+      <Pagination pageQuery={Number(pageId)} />
     </Layout>
   );
 }
