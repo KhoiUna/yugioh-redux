@@ -11,6 +11,8 @@ export default function Home() {
     Cards.fetchAllCards().then((res) => setCardsArray(res));
   }, []);
 
+  const deckNum = null;
+
   return (
     <>
       <Head>
@@ -24,7 +26,7 @@ export default function Home() {
           </h1>
         </Link>
         <Link href="/deck">
-          <span className={styles.span}>My deck</span>
+          <span className={styles.span}>My deck ( {deckNum || 0} )</span>
         </Link>
       </header>
 
