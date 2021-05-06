@@ -17,6 +17,10 @@
   padding: 15px;
   width: 100%;
   font-size: 1rem;
+  border-radius: 15px;
+}
+.search_bar:focus {
+  outline: none;
 }
 
 .flex_container {

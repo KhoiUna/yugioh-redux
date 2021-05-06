@@ -31,7 +31,7 @@ export default function Home() {
       <main>
         <div style={{ margin: "3% 4%" }}>
           <form>
-            <label for="card" hidden>
+            <label htmlFor="card" hidden>
               Card:
             </label>
             <input
