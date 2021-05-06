@@ -37,7 +37,14 @@ export default function Home() {
             </Fragment>
           ))}
         {!cardsArray && (
-          <p style={{ fontWeight: "bold", fontSize: "1rem", margin: "5%" }}>
+          <p
+            style={{
+              fontWeight: "bold",
+              fontSize: "1rem",
+              margin: "5%",
+              fontStyle: "italic",
+            }}
+          >
             Loading...
           </p>
         )}
