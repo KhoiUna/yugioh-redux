@@ -4,9 +4,9 @@ import Cards from "../utils/Cards";
 export const cardsSlice = createSlice({
   name: "cards",
   initialState: {
-    cards: null,
+    cards: [],
     lastPage: null,
-    deck: [],
+    deckNum: 0,
   },
   reducers: {
     loadCards: (state, action) => {
@@ -14,11 +14,13 @@ export const cardsSlice = createSlice({
       state.lastPage = Math.floor(action.payload.length / 20) + 1;
     },
     addToDeck: (state, action) => {
-      const card = action.payload;
-      state.deck.push(card);
+      const cardId = action.payload;
+      state.cards.filter((i) => i.id === cardId).map((i) => (i.added = true));
+      state.deckNum++;
     },
     removeFromDeck: (state, action) => {
-      //
+      const cardId = action.payload;
+      state.deckNum--;
     },
   },
 });
@@ -38,5 +40,5 @@ export const loadCardsAsync = () => async (dispatch) => {
 };
 
 export const selectCards = (state) => state.cards.cards;
-export const selectDeck = (state) => state.cards.deck;
 export const selectLastPage = (state) => state.cards.lastPage;
+export const selectDeckNum = (state) => state.cards.deckNum;

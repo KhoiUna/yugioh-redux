@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import Layout from "../containers/layout";
-import { selectDeck } from "../features/cardsSlice";
+import { selectCards } from "../features/cardsSlice";
 import { Fragment } from "react";
 import Card from "../components/Card";
 import styles from "../styles/index.module.css";
 
 export default function Deck() {
-  const deckArray = useSelector(selectDeck);
+  const deckArray = useSelector(selectCards).filter((i) => i.added === true);
 
   return (
     <Layout page="deck">
