@@ -15,8 +15,8 @@ export default function Deck() {
             Yugioh Picks
           </h1>
         </Link>
-        <Link href="/deck">
-          <span className={styles.span}>My deck</span>
+        <Link href="/">
+          <span className={styles.span}>Go Back</span>
         </Link>
       </header>
 
