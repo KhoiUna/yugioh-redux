@@ -3,6 +3,6 @@ import deckReducer from "../features/deckSlice";
 
 export default configureStore({
   reducer: {
-    counter: deckReducer,
+    deck: deckReducer,
   },
 });
