@@ -1,15 +1,13 @@
-import { useEffect, useState, Fragment } from "react";
-import Cards from "../utils/Cards";
+import { Fragment } from "react";
 import Card from "../components/Card";
 import styles from "../styles/index.module.css";
 import Layout from "../containers/layout";
 import Pagination from "../components/Pagination";
+import { useSelector } from "react-redux";
+import { selectCards } from "../features/cardsSlice";
 
 export default function Home() {
-  const [cardsArray, setCardsArray] = useState(null);
-  useEffect(() => {
-    Cards.fetchCards(1).then((res) => setCardsArray(res));
-  }, []);
+  const cardsArray = useSelector(selectCards);
 
   return (
     <Layout page="home">
@@ -29,7 +27,7 @@ export default function Home() {
 
       <div className={styles.flex_container}>
         {cardsArray &&
-          cardsArray.map((info, index) => (
+          cardsArray.slice(0, 20).map((info, index) => (
             <Fragment key={index}>
               <Card
                 imageURL={info.card_images[0].image_url}

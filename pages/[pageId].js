@@ -1,18 +1,16 @@
-import { useEffect, useState, Fragment } from "react";
-import Cards from "../utils/Cards";
+import { Fragment } from "react";
 import Card from "../components/Card";
 import styles from "../styles/index.module.css";
 import Layout from "../containers/layout";
 import Pagination from "../components/Pagination";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectCards } from "../features/cardsSlice";
 
 export default function Index() {
-  const [cardsArray, setCardsArray] = useState(null);
+  const cardsArray = useSelector(selectCards);
   const router = useRouter();
   const pageId = router.query.pageId;
-  useEffect(() => {
-    Cards.fetchCards(pageId).then((res) => setCardsArray(res));
-  }, [pageId]);
 
   return (
     <Layout page="home">
@@ -32,7 +30,7 @@ export default function Index() {
 
       <div className={styles.flex_container}>
         {cardsArray &&
-          cardsArray.map((info, index) => (
+          cardsArray.slice(pageId * 20 - 20, pageId * 20).map((info, index) => (
             <Fragment key={index}>
               <Card
                 imageURL={info.card_images[0].image_url}
