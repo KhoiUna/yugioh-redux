@@ -52,6 +52,20 @@
   cursor: pointer;
 }
 
+.remove {
+  border: 3px solid black;
+  margin: 1%;
+  padding: 5%;
+  text-align: center;
+  font-weight: bold;
+  background-color: #18c501;
+  color: white;
+}
+.remove:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
 .pagination_container {
   text-align: center;
   padding: 1.5rem;

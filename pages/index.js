@@ -33,6 +33,7 @@ export default function Home() {
                 cardId={info.id}
                 imageURL={info.cardImage}
                 cardName={info.cardName}
+                added={info.added}
               />
             </Fragment>
           ))}
