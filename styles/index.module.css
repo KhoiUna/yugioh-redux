@@ -52,13 +52,23 @@
   cursor: pointer;
 }
 
-.pagination {
+.pagination_container {
   text-align: center;
-  padding: 1%;
+  padding: 1.5rem;
   margin-top: 1.5%;
-  font-size: large;
-  font-weight: bold;
   background-color: #b4b4b4;
+}
+.pagination_button {
+  cursor: pointer;
+  margin: 0 10px;
+  font-weight: bold;
+}
+.pagination_button:hover {
+  text-decoration: underline;
+  color: purple;
+}
+.pagination_main {
+  font-size: 1.5rem;
 }
 
 .footer {

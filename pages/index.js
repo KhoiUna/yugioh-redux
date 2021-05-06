@@ -52,7 +52,7 @@ export default function Home() {
         )}
       </div>
 
-      <Pagination/>
+      <Pagination pageQuery={1} />
     </Layout>
   );
 }
