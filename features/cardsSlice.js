@@ -26,7 +26,12 @@ export const { loadCards, addToDeck, removeFromDeck } = cardsSlice.actions;
 export default cardsSlice.reducer;
 
 export const loadCardsAsync = () => async (dispatch) => {
-  const cardsArray = await Cards.fetchAllCards();
+  let cardsArray = await Cards.fetchAllCards();
+  cardsArray = cardsArray.map((i) => ({
+    id: i.id,
+    cardName: i.name,
+    cardImage: i.card_images[0].image_url,
+  }));
   dispatch(loadCards(cardsArray));
 };
 

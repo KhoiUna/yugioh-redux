@@ -30,8 +30,9 @@ export default function Home() {
           cardsArray.slice(0, 20).map((info, index) => (
             <Fragment key={index}>
               <Card
-                imageURL={info.card_images[0].image_url}
-                cardName={info.name}
+                cardId={info.id}
+                imageURL={info.cardImage}
+                cardName={info.cardName}
               />
             </Fragment>
           ))}
