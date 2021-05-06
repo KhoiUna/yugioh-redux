@@ -1,5 +1,10 @@
+import styles from "../styles/index.module.css";
+
 export default function Card({ imageURL, cardName }) {
   return (
-    <img src={imageURL} alt={cardName} style={{ width: "20%", margin: "1%" }} />
+    <div className={styles.card_container}>
+      <img src={imageURL} alt={cardName} className={styles.image} />
+      <div className={styles.add}>Add to Deck +</div>
+    </div>
   );
 }

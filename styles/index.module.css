@@ -1,0 +1,72 @@
+.header {
+  display: grid;
+  background-color: black;
+  color: white;
+  padding: 2rem;
+  grid-template-columns: 4fr 1fr;
+}
+
+.span {
+  margin-top: 0.6rem;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.search_bar {
+  padding: 15px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.flex_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card_container {
+  width: 20%;
+  min-width: 280px;
+  margin: 3% 2% 1% 2%;
+}
+
+.image {
+  width: 100%;
+}
+
+.add {
+  border: 3px solid black;
+  margin: 1%;
+  padding: 5%;
+  text-align: center;
+  font-weight: bold;
+}
+.add:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination {
+  text-align: center;
+  padding: 1%;
+  margin-top: 1.5%;
+  font-size: large;
+  font-weight: bold;
+  background-color: #b4b4b4;
+}
+
+.footer {
+  text-align: center;
+  font-size: 1rem;
+  padding: 1.5rem;
+  background-color: black;
+  color: white;
+}
+
+.link {
+  text-decoration: underline;
+  color: white;
+  font-weight: bold;
+}
