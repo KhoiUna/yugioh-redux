@@ -3,16 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 export const deckSlice = createSlice({
   name: "deck",
   initialState: {
-    value: 0,
+    deck: [],
   },
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    addToDeck: (state, action) => {
+      const card = action.payload;
+      state.push(card);
+    },
+    removeFromDeck: (state, action) => {
+      //
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = deckSlice.actions;
+export const { addToDeck } = deckSlice.actions;
 export default deckSlice.reducer;
 
-export const selectCount = (state) => state.counter.value;
+export const selectDeck = (state) => state.deck.deck;
