@@ -5,24 +5,30 @@ export const cardsSlice = createSlice({
   name: "cards",
   initialState: {
     cards: [],
-    searchedCards: [],
     lastPage: null,
     deckNum: 0,
     deck: [],
   },
   reducers: {
     loadCards: (state, action) => {
+      const { cardsArray, totalCardLength } = action.payload;
       const addedCardIds = state.deck.map((i) => i.id);
-      state.cards = action.payload.map((i) => {
+      state.cards = cardsArray.map((i) => {
+        i.added = addedCardIds.includes(i.id);
+        return i;
+      });
+      state.displayCards = state.cards;
+
+      state.lastPage = Math.floor(totalCardLength / 20) + 1;
+    },
+    searchCards: (state, action) => {
+      const addedCardIds = state.deck.map((i) => i.id);
+      state.cards = action.payload?.map((i) => {
         i.added = addedCardIds.includes(i.id);
         return i;
       });
 
       state.lastPage = Math.floor(action.payload.length / 20) + 1;
-    },
-    searchCards: (state, action) => {
-      const cardName = action.payload;
-      state.cards = state.cards.filter((i) => i.name === cardName);
     },
     addToDeck: (state, action) => {
       const card = action.payload;
@@ -41,18 +47,35 @@ export const cardsSlice = createSlice({
   },
 });
 
-export const { loadCards, addToDeck, removeFromDeck } = cardsSlice.actions;
+export const {
+  loadCards,
+  searchCards,
+  addToDeck,
+  removeFromDeck,
+} = cardsSlice.actions;
 export default cardsSlice.reducer;
 
-export const loadCardsAsync = () => async (dispatch) => {
-  let cardsArray = await Cards.fetchAllCards();
+export const loadCardsAsync = (limit) => async (dispatch) => {
+  let { cardsArray, totalCardLength } = await Cards.fetchAllCards(limit);
   cardsArray = cardsArray.map((i) => ({
     id: i.id,
     cardName: i.name,
     cardImage: i.card_images[0].image_url,
     added: false,
   }));
-  dispatch(loadCards(cardsArray));
+  dispatch(loadCards({ cardsArray, totalCardLength }));
+};
+
+export const searchCardsAsync = (cardName) => async (dispatch) => {
+  let cardsArray = await Cards.fetchCardsByName(cardName);
+  cardsArray = cardsArray?.map((i) => ({
+    id: i.id,
+    cardName: i.name,
+    cardImage: i.card_images[0].image_url,
+    added: false,
+  }));
+  console.log(cardsArray);
+  dispatch(searchCards(cardsArray));
 };
 
 export const selectCards = (state) => state.cards.cards;
