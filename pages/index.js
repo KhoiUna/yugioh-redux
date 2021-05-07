@@ -9,7 +9,7 @@ import SearchBar from "../components/SearchBar";
 
 export default function Home() {
   const cardsArray = useSelector(selectCards);
-  console.log(cardsArray);
+
   return (
     <Layout page="home">
       <SearchBar />
