@@ -16,6 +16,6 @@ export default class Cards {
     ).json();
 
     const cardsArray = res.data?.slice(limit * 20 - 20, limit * 20);
-    return { cardsArray, totalCardLength: cardsArray?.length };
+    return { cardsArray, totalCardLength: res.data?.length };
   }
 }
