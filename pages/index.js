@@ -1,14 +1,38 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Card from "../components/Card";
 import styles from "../styles/index.module.css";
 import Layout from "../containers/layout";
 import Pagination from "../components/Pagination";
-import { useSelector } from "react-redux";
-import { selectCards } from "../features/cardsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loadCardsAsync, selectCards } from "../features/cardsSlice";
 import SearchBar from "../components/SearchBar";
 
 export default function Home() {
   const cardsArray = useSelector(selectCards);
+  const dispatch = useDispatch();
+
+  const [pageLimit, setPageLimit] = useState(1);
+  useEffect(() => {
+    const load = setTimeout(() => {
+      dispatch(loadCardsAsync(pageLimit));
+    });
+
+    return () => {
+      clearTimeout(load);
+    };
+  }, [pageLimit]);
+
+  const handleClick = (query) => {
+    if (query === 1 || query === "start") {
+      setPageLimit(1);
+      return;
+    }
+
+    if (!isNaN(query)) {
+      setPageLimit(query);
+      return;
+    }
+  };
 
   return (
     <Layout page="home">
@@ -53,7 +77,7 @@ export default function Home() {
         )}
       </div>
 
-      <Pagination pageQuery={1} />
+      <Pagination pageQuery={pageLimit} handleClick={handleClick} />
     </Layout>
   );
 }

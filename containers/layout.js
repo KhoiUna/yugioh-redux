@@ -1,26 +1,13 @@
 import Head from "next/head";
 import styles from "../styles/index.module.css";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectDeckNum } from "../features/cardsSlice";
-import { useEffect, useRef } from "react";
-import { loadCardsAsync } from "../features/cardsSlice";
 import { useRouter } from "next/router";
 
 export default function Layout({ page, children }) {
   const deckNum = useSelector(selectDeckNum);
-  const dispatch = useDispatch();
   const router = useRouter();
-
-  useEffect(() => {
-    const load = setTimeout(() => {
-      dispatch(loadCardsAsync());
-    });
-
-    return () => {
-      clearTimeout(load);
-    };
-  }, []);
 
   return (
     <>
