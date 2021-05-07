@@ -45,10 +45,6 @@
   padding: 5%;
   text-align: center;
   font-weight: bold;
-}
-.add:hover {
-  background-color: black;
-  color: white;
   cursor: pointer;
 }
 
@@ -58,11 +54,8 @@
   padding: 5%;
   text-align: center;
   font-weight: bold;
-  background-color: #18c501;
-  color: white;
-}
-.remove:hover {
   background-color: red;
+  color: white;
   cursor: pointer;
 }
 
