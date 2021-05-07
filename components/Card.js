@@ -9,7 +9,9 @@ export default function Card({ cardId, imageURL, cardName, added }) {
     if (added) {
       dispatch(removeFromDeck(cardId));
     } else {
-      dispatch(addToDeck({ cardId, cardImage: imageURL, cardName, added }));
+      dispatch(
+        addToDeck({ cardId, cardImage: imageURL, cardName, added: true })
+      );
     }
     return;
   };
