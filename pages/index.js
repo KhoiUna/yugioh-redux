@@ -34,9 +34,13 @@ export default function Home() {
     }
   };
 
+  const resetPageLimit = () => {
+    setPageLimit(1);
+  };
+
   return (
     <Layout page="home">
-      <SearchBar />
+      <SearchBar resetPageLimit={resetPageLimit} />
 
       <div className={styles.flex_container}>
         {cardsArray &&
