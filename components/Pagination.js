@@ -1,33 +1,10 @@
 import styles from "../styles/index.module.css";
 import cx from "classnames";
-import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectLastPage } from "../features/cardsSlice";
 
-export default function Pagination({ pageQuery }) {
-  const router = useRouter();
+export default function Pagination({ pageQuery, handleClick }) {
   const lastPage = useSelector(selectLastPage);
-
-  const handleClick = (query) => {
-    if (query === 1 || query === "start") {
-      router.push("/");
-      return;
-    }
-
-    if (!isNaN(query)) {
-      router.push({
-        pathname: "/[pageId]",
-        query: { pageId: query },
-      });
-      return;
-    }
-
-    router.push({
-      pathname: "/[pageId]",
-      query: { pageId: lastPage },
-    });
-    return;
-  };
 
   return (
     <>
@@ -76,7 +53,7 @@ export default function Pagination({ pageQuery }) {
             </span>
             <span
               className={styles.pagination_button}
-              onClick={() => handleClick("end")}
+              onClick={() => handleClick(lastPage)}
             >
               {">>"}
             </span>
