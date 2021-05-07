@@ -1,12 +1,9 @@
-import { useDispatch } from "react-redux";
-import { searchCardsAsync } from "../features/cardsSlice";
 import styles from "../styles/index.module.css";
 
-export default function SearchBar({ resetPageLimit }) {
-  const dispatch = useDispatch();
+export default function SearchBar({ resetPageLimit, setSearching }) {
   const handleChange = ({ target }) => {
+    setSearching(target.value);
     resetPageLimit();
-    return dispatch(searchCardsAsync(target.value));
   };
 
   return (

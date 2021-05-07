@@ -1,10 +1,14 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Card from "../components/Card";
 import styles from "../styles/index.module.css";
 import Layout from "../containers/layout";
 import Pagination from "../components/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { loadCardsAsync, selectCards } from "../features/cardsSlice";
+import {
+  loadCardsAsync,
+  searchCardsAsync,
+  selectCards,
+} from "../features/cardsSlice";
 import SearchBar from "../components/SearchBar";
 
 export default function Home() {
@@ -12,15 +16,23 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const [pageLimit, setPageLimit] = useState(1);
+  const [searching, setSearching] = useState("");
   useEffect(() => {
-    const load = setTimeout(() => {
-      dispatch(loadCardsAsync(pageLimit));
-    });
+    let load;
+    if (!searching) {
+      load = setTimeout(() => {
+        dispatch(loadCardsAsync(pageLimit));
+      });
+    } else {
+      load = setTimeout(() => {
+        dispatch(searchCardsAsync(searching, pageLimit));
+      });
+    }
 
     return () => {
       clearTimeout(load);
     };
-  }, [pageLimit]);
+  }, [searching, pageLimit]);
 
   const handleClick = (query) => {
     if (query === 1 || query === "start") {
@@ -40,7 +52,10 @@ export default function Home() {
 
   return (
     <Layout page="home">
-      <SearchBar resetPageLimit={resetPageLimit} />
+      <SearchBar
+        resetPageLimit={resetPageLimit}
+        setSearching={(string) => setSearching(string)}
+      />
 
       <div className={styles.flex_container}>
         {cardsArray &&

@@ -8,14 +8,14 @@ export default class Cards {
     return { cardsArray, totalCardLength: res.data.length };
   }
 
-  static async fetchCardsByName(cardName) {
+  static async fetchCardsByName(cardName, limit) {
     const res = await (
       await fetch(
         `https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${cardName}`
       )
     ).json();
 
-    const cardsArray = res.data;
+    const cardsArray = res.data?.slice(limit * 20 - 20, limit * 20);
     return { cardsArray, totalCardLength: cardsArray?.length };
   }
 }
