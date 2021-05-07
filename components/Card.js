@@ -5,11 +5,11 @@ import { addToDeck, removeFromDeck } from "../features/cardsSlice";
 export default function Card({ cardId, imageURL, cardName, added }) {
   const dispatch = useDispatch();
 
-  const handleClick = (cardId, added) => {
+  const handleClick = (cardId, imageURL, cardName, added) => {
     if (added) {
       dispatch(removeFromDeck(cardId));
     } else {
-      dispatch(addToDeck(cardId));
+      dispatch(addToDeck({ cardId, cardImage: imageURL, cardName, added }));
     }
     return;
   };
@@ -19,7 +19,7 @@ export default function Card({ cardId, imageURL, cardName, added }) {
       <img src={imageURL} alt={cardName} className={styles.image} />
       <div
         className={added ? styles.remove : styles.add}
-        onClick={() => handleClick(cardId, added)}
+        onClick={() => handleClick(cardId, imageURL, cardName, added)}
       >
         {!added && "Add to Deck +"}
         {added && "Remove from Deck"}

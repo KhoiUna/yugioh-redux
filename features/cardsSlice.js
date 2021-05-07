@@ -7,6 +7,7 @@ export const cardsSlice = createSlice({
     cards: [],
     lastPage: null,
     deckNum: 0,
+    deck: [],
   },
   reducers: {
     loadCards: (state, action) => {
@@ -14,12 +15,19 @@ export const cardsSlice = createSlice({
       state.lastPage = Math.floor(action.payload.length / 20) + 1;
     },
     addToDeck: (state, action) => {
-      const cardId = action.payload;
-      state.cards.filter((i) => i.id === cardId).map((i) => (i.added = true));
+      const card = action.payload;
+      state.cards
+        .filter((i) => i.id === card.cardId)
+        .map((i) => (i.added = true));
+
+      state.deck.push(card);
       state.deckNum++;
     },
     removeFromDeck: (state, action) => {
       const cardId = action.payload;
+      state.cards.filter((i) => i.id === cardId).map((i) => (i.added = false));
+
+      state.deck = state.deck.filter((i) => i.cardId !== cardId);
       state.deckNum--;
     },
   },
@@ -42,3 +50,4 @@ export const loadCardsAsync = () => async (dispatch) => {
 export const selectCards = (state) => state.cards.cards;
 export const selectLastPage = (state) => state.cards.lastPage;
 export const selectDeckNum = (state) => state.cards.deckNum;
+export const selectDeck = (state) => state.cards.deck;
