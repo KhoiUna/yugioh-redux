@@ -29,6 +29,7 @@ export default function Layout({ page, children }) {
           name="description"
           content="Search cards and build your own Yu-gi-oh Deck"
         />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="og:title" content="Yugioh Picks" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
