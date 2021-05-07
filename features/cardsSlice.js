@@ -67,8 +67,11 @@ export const loadCardsAsync = (limit) => async (dispatch) => {
   dispatch(loadCards({ cardsArray, totalCardLength }));
 };
 
-export const searchCardsAsync = (cardName) => async (dispatch) => {
-  let { cardsArray, totalCardLength } = await Cards.fetchCardsByName(cardName);
+export const searchCardsAsync = (cardName, limit) => async (dispatch) => {
+  let { cardsArray, totalCardLength } = await Cards.fetchCardsByName(
+    cardName,
+    limit
+  );
   cardsArray = cardsArray?.map((i) => ({
     id: i.id,
     cardName: i.name,
