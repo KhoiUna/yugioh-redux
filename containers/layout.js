@@ -33,7 +33,7 @@ export default function Layout({ page, children }) {
         <meta name="og:title" content="Yugioh Picks" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
-        <title>Yugioh Picks | {page === "home" ? "Home" : "My Deck"}</title>
+        <title>Yu-gi-oh Picks | {page === "home" ? "Home" : "My Deck"}</title>
       </Head>
 
       <header className={styles.header}>
