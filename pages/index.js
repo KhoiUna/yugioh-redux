@@ -9,7 +9,7 @@ import SearchBar from "../components/SearchBar";
 
 export default function Home() {
   const cardsArray = useSelector(selectCards);
-
+  console.log(cardsArray);
   return (
     <Layout page="home">
       <SearchBar />
@@ -26,7 +26,7 @@ export default function Home() {
               />
             </Fragment>
           ))}
-        {!cardsArray && (
+        {cardsArray?.length === 0 && (
           <p
             style={{
               fontWeight: "bold",
@@ -36,6 +36,19 @@ export default function Home() {
             }}
           >
             Loading...
+          </p>
+        )}
+        {cardsArray === undefined && (
+          <p
+            style={{
+              fontWeight: "bold",
+              fontSize: "1rem",
+              margin: "5%",
+              fontStyle: "italic",
+              color: "red",
+            }}
+          >
+            No cards with that name
           </p>
         )}
       </div>
