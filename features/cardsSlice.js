@@ -17,7 +17,6 @@ export const cardsSlice = createSlice({
         i.added = addedCardIds.includes(i.id);
         return i;
       });
-      state.displayCards = state.cards;
 
       state.lastPage = Math.floor(totalCardLength / 20) + 1;
     },
