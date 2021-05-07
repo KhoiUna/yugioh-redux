@@ -6,6 +6,7 @@ import Pagination from "../components/Pagination";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectCards } from "../features/cardsSlice";
+import SearchBar from "../components/SearchBar";
 
 export default function Index() {
   const cardsArray = useSelector(selectCards);
@@ -14,19 +15,7 @@ export default function Index() {
 
   return (
     <Layout page="home">
-      <div style={{ margin: "3% 4%" }}>
-        <form>
-          <label htmlFor="card" hidden>
-            Card:
-          </label>
-          <input
-            id="card"
-            type="search"
-            className={styles.search_bar}
-            placeholder="Search your card here"
-          />
-        </form>
-      </div>
+      <SearchBar />
 
       <div className={styles.flex_container}>
         {cardsArray &&
