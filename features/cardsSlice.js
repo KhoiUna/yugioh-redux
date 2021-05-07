@@ -22,13 +22,14 @@ export const cardsSlice = createSlice({
       state.lastPage = Math.floor(totalCardLength / 20) + 1;
     },
     searchCards: (state, action) => {
+      const { cardsArray, totalCardLength } = action.payload;
       const addedCardIds = state.deck.map((i) => i.id);
-      state.cards = action.payload?.map((i) => {
+      state.cards = cardsArray?.map((i) => {
         i.added = addedCardIds.includes(i.id);
         return i;
       });
 
-      state.lastPage = Math.floor(action.payload.length / 20) + 1;
+      state.lastPage = Math.floor(totalCardLength / 20) + 1;
     },
     addToDeck: (state, action) => {
       const card = action.payload;
@@ -67,15 +68,14 @@ export const loadCardsAsync = (limit) => async (dispatch) => {
 };
 
 export const searchCardsAsync = (cardName) => async (dispatch) => {
-  let cardsArray = await Cards.fetchCardsByName(cardName);
+  let { cardsArray, totalCardLength } = await Cards.fetchCardsByName(cardName);
   cardsArray = cardsArray?.map((i) => ({
     id: i.id,
     cardName: i.name,
     cardImage: i.card_images[0].image_url,
     added: false,
   }));
-  console.log(cardsArray);
-  dispatch(searchCards(cardsArray));
+  dispatch(searchCards({ cardsArray, totalCardLength }));
 };
 
 export const selectCards = (state) => state.cards.cards;

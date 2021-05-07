@@ -16,6 +16,6 @@ export default class Cards {
     ).json();
 
     const cardsArray = res.data;
-    return cardsArray;
+    return { cardsArray, totalCardLength: cardsArray?.length };
   }
 }
