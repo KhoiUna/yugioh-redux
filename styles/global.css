@@ -5,3 +5,14 @@
   margin: 0 auto;
   font-family: "Open Sans", sans-serif;
 }
+
+body::-webkit-scrollbar {
+  width: 10px !important;
+}
+body::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: silver;
+  border-radius: 20px;
+}

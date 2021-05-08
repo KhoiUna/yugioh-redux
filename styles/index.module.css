@@ -10,6 +10,15 @@
   background-color: #cecece;
 }
 
+.main_deck {
+  height: 95vh;
+  max-height: 95vh;
+  overflow-y: auto;
+}
+.main_deck::-webkit-scrollbar {
+  width: 0px !important;
+}
+
 .span {
   margin-top: 0.6rem;
   text-decoration: underline;

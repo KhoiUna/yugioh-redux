@@ -44,7 +44,7 @@ export default function Layout({ page, children }) {
           )}
         </header>
 
-        <main>{children}</main>
+        <main className={page === "deck" && styles.main_deck}>{children}</main>
 
         <footer className={styles.footer}>
           &copy; {new Date().getFullYear()} A product of{" "}
