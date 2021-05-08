@@ -6,6 +6,10 @@
   grid-template-columns: 4fr 1fr;
 }
 
+.container {
+  background-color: #cecece;
+}
+
 .span {
   margin-top: 0.6rem;
   text-decoration: underline;
@@ -46,6 +50,7 @@
   text-align: center;
   font-weight: bold;
   cursor: pointer;
+  background-color: white;
 }
 
 .remove {
@@ -63,7 +68,6 @@
   text-align: center;
   padding: 1.5rem;
   margin-top: 1.5%;
-  background-color: #b4b4b4;
 }
 .pagination_button {
   cursor: pointer;
@@ -73,6 +77,15 @@
 .pagination_button:hover {
   text-decoration: underline;
   color: purple;
+}
+.pagination_arrow {
+  border: 2px solid black;
+  padding: 4px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+  font-weight: bold;
 }
 .pagination_main {
   font-size: 1.5rem;
@@ -93,5 +106,9 @@
 }
 
 .total_card {
+  border: 3px solid black;
+  padding: 1%;
   margin: 1%;
+  background-color: white;
+  width: fit-content;
 }

@@ -21,6 +21,7 @@ export default function Deck() {
           {deckNum}
         </h3>
       </div>
+
       <div className={styles.flex_container}>
         {deckArray.map((info, index) => (
           <Fragment key={index}>

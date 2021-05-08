@@ -12,13 +12,13 @@ export default function Pagination({ pageQuery, handleClick }) {
         {pageQuery !== 1 && (
           <>
             <span
-              className={styles.pagination_button}
+              className={styles.pagination_arrow}
               onClick={() => handleClick("start")}
             >
               {"<<"}
             </span>
             <span
-              className={styles.pagination_button}
+              className={styles.pagination_arrow}
               onClick={() => handleClick(pageQuery - 1)}
             >
               {"<"}
@@ -46,13 +46,13 @@ export default function Pagination({ pageQuery, handleClick }) {
               {pageQuery + 1}
             </span>
             <span
-              className={styles.pagination_button}
+              className={styles.pagination_arrow}
               onClick={() => handleClick(pageQuery + 1)}
             >
               {">"}
             </span>
             <span
-              className={styles.pagination_button}
+              className={styles.pagination_arrow}
               onClick={() => handleClick(lastPage)}
             >
               {">>"}
