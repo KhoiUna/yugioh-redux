@@ -3,7 +3,7 @@ import cx from "classnames";
 import { useSelector } from "react-redux";
 import { selectLastPage } from "../features/cardsSlice";
 
-export default function Pagination({ pageQuery, handleClick }) {
+export default function Pagination({ pageQuery, handleClickPagination }) {
   const lastPage = useSelector(selectLastPage);
 
   return (
@@ -13,13 +13,13 @@ export default function Pagination({ pageQuery, handleClick }) {
           <>
             <span
               className={styles.pagination_arrow}
-              onClick={() => handleClick("start")}
+              onClick={() => handleClickPagination(1)}
             >
               {"<<"}
             </span>
             <span
               className={styles.pagination_arrow}
-              onClick={() => handleClick(pageQuery - 1)}
+              onClick={() => handleClickPagination(pageQuery - 1)}
             >
               {"<"}
             </span>
@@ -27,13 +27,13 @@ export default function Pagination({ pageQuery, handleClick }) {
         )}
         <span
           className={styles.pagination_button}
-          onClick={() => handleClick(pageQuery - 1)}
+          onClick={() => handleClickPagination(pageQuery - 1)}
         >
           {pageQuery !== 1 && pageQuery - 1}
         </span>
         <span
           className={cx(styles.pagination_button, styles.pagination_main)}
-          onClick={() => handleClick(pageQuery)}
+          onClick={() => handleClickPagination(pageQuery)}
         >
           {pageQuery}
         </span>
@@ -41,19 +41,19 @@ export default function Pagination({ pageQuery, handleClick }) {
           <>
             <span
               className={styles.pagination_button}
-              onClick={() => handleClick(pageQuery + 1)}
+              onClick={() => handleClickPagination(pageQuery + 1)}
             >
               {pageQuery + 1}
             </span>
             <span
               className={styles.pagination_arrow}
-              onClick={() => handleClick(pageQuery + 1)}
+              onClick={() => handleClickPagination(pageQuery + 1)}
             >
               {">"}
             </span>
             <span
               className={styles.pagination_arrow}
-              onClick={() => handleClick(lastPage)}
+              onClick={() => handleClickPagination(lastPage)}
             >
               {">>"}
             </span>

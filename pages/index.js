@@ -34,21 +34,9 @@ export default function Home() {
     };
   }, [searching, pageLimit]);
 
-  const handleClick = (query) => {
-    if (query === 1 || query === "start") {
-      setPageLimit(1);
-      return;
-    }
+  const handleClickPagination = (query) => setPageLimit(query);
 
-    if (!isNaN(query)) {
-      setPageLimit(query);
-      return;
-    }
-  };
-
-  const resetPageLimit = () => {
-    setPageLimit(1);
-  };
+  const resetPageLimit = () => setPageLimit(1);
 
   return (
     <Layout page="home">
@@ -96,7 +84,10 @@ export default function Home() {
         )}
       </div>
 
-      <Pagination pageQuery={pageLimit} handleClick={handleClick} />
+      <Pagination
+        pageQuery={pageLimit}
+        handleClickPagination={handleClickPagination}
+      />
     </Layout>
   );
 }
