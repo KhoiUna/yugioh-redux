@@ -117,3 +117,4 @@ export const selectCards = (state) => state.cards.cards;
 export const selectLastPage = (state) => state.cards.lastPage;
 export const selectDeckNum = (state) => state.cards.deckNum;
 export const selectDeck = (state) => state.cards.deck;
+export const isLoadingCards = (state) => state.cards.isLoadingCards;
