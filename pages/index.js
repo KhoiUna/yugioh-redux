@@ -25,7 +25,7 @@ export default function Home() {
       });
     } else {
       load = setTimeout(() => {
-        dispatch(searchCardsAsync(searching, pageLimit));
+        dispatch(searchCardsAsync({ cardName: searching, limit: pageLimit }));
       });
     }
 
